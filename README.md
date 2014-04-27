@@ -24,13 +24,17 @@ var upyun = new UPYUN('bucket_name', 'user', 'pass');
 
 // all the callbacks looks like
 function(err[, data]){
-// blah blah
+  if (err) {
+    // Do error handling
+  } else {
+    // Success
+  }
 }
 ```
 
 ## Methods
 
-### writeFile(path, buffer, cb) // callback: `function(err){}`
+### writeFile(path, buffer, cb) `// callback: function(err){}`
 
 Write(Upload) `buffer` Content Up To The Given `path`.
 
@@ -42,7 +46,7 @@ The `path` will be built automatically, like `mkdir -p path`.
 upyun.writeFile(path, 'Node.js_Buffer_OR_String', cb);
 ```
 
-### fetchFile(path, cb) // callback: `function(err, contents){}`
+### fetchFile(path, cb) `// callback: function(err, contents){}`
 
 Fetch(Download) `contents` From The Given `path`.
 
@@ -56,7 +60,7 @@ upyun.fetchFile(path, function(err, contents){
 });
 ```
 
-### removeFile(path, cb) // callback: `function(err){}`
+### removeFile(path, cb) `// callback: function(err){}`
 
 Remove(Delete) The Certain File From The Given `path`.
 
@@ -64,7 +68,7 @@ Remove(Delete) The Certain File From The Given `path`.
 upyun.removeFile(path, cb);
 ```
 
-### createDirs(path, cb) // callback: `function(err){}`
+### createDirs(path, cb) `// callback: function(err){}`
 
 Create The `path`.
 
@@ -76,7 +80,7 @@ The `path` will be built automatically, like `mkdir -p path`.
 upyun.createDirs(path, cb);
 ```
 
-### removeDir(path, cb) // callback: `function(err){}`
+### removeDir(path, cb) `// callback: function(err){}`
 
 Remove(Delete) An **EMPTY** Directory By Given `path`.
 
@@ -84,7 +88,7 @@ Remove(Delete) An **EMPTY** Directory By Given `path`.
 upyun.removeDir(path, cb);
 ```
 
-### destroyDir(path, callback) // `callback: function(err){}`
+### destroyDir(path, callback) `// callback: function(err){}`
 
 Recursively Remove The Given Path(Directory).
 Before Call This Method, Make Sure To Set "upyun.iDOReallyWantToDestroyDirectories" To true Every Time You Call This.
@@ -106,7 +110,7 @@ var entity = {
 };
 ```
 
-### inspect(path, cb) // callback: `function(err, entity){}`
+### inspect(path, cb) `// callback: function(err, entity){}`
 
 Inspect The Entity Of The Given `path`.
 
@@ -114,7 +118,7 @@ Inspect The Entity Of The Given `path`.
 upyun.inspect(path, cb);
 ```
 
-### listDir(path, cb) // callback: `function(err, an_array_of_entities){}`
+### listDir(path, cb) `// callback: function(err, an_array_of_entities){}`
 
 List A Certain Directory By The Given `path`.
 
@@ -122,7 +126,7 @@ List A Certain Directory By The Given `path`.
 upyun.listDir(path, cb);
 ```
 
-### bucketUsage(callback) // callback: `function(err, bytesUsed){}`
+### bucketUsage(callback) `// callback: function(err, bytesUsed){}`
 
 Get The Total Bytes Used By This Bucket.
 
@@ -130,7 +134,7 @@ Get The Total Bytes Used By This Bucket.
 upyun.bucketUsage(cb);
 ```
 
-### setHost(hostIndex) // no callback
+### setHost(hostIndex) `// no callback`
 
 There are 4 hosts of UPYUN HTTP REST API, choose one of them.
 
