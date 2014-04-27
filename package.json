@@ -1,0 +1,27 @@
+{
+  "name": "upyun-core",
+  "description": "Make Use of UPYUN API Much Easier.",
+  "author": {
+    "name": "ETiV Wang"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "private": true,
+  "version": "0.1.0",
+  "keywords": [
+    "upyun", "cloud storage"
+  ],
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "should": "~3.3.1",
+    "grunt": "~0.4.4",
+    "grunt-mocha-test": "~0.10.2",
+    "grunt-contrib-watch": "~0.6.1",
+    "random-word": "~0.1.0"
+  },
+  "dependencies": {
+    "request": "~2.34.0",
+    "async": "~0.7.0"
+  }
+}
