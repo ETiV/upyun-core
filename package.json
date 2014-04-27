@@ -7,8 +7,8 @@
   "scripts": {
     "test": "grunt test"
   },
+  "readmeFilename": "README.md",
   "main": "./main.js",
-  "private": true,
   "version": "0.1.0",
   "keywords": [
     "upyun", "cloud storage"
