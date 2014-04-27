@@ -11,7 +11,7 @@
   "homepage": "https://github.com/ETiV/upyun-core",
   "readmeFilename": "README.md",
   "main": "./main.js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "keywords": [
     "upyun", "cloud storage"
   ],
