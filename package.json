@@ -7,6 +7,8 @@
   "scripts": {
     "test": "grunt test"
   },
+  "repository": "git://github.com/ETiV/upyun-core.git",
+  "homepage": "https://github.com/ETiV/upyun-core",
   "readmeFilename": "README.md",
   "main": "./main.js",
   "version": "0.1.0",
