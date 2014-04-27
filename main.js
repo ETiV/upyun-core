@@ -97,12 +97,12 @@
     }
 
     if (arguments.length >= 4 && !(buffer instanceof Buffer)) {
-      cb(new Error('Local Status: 0x80007F11  Body: Argument 3 Must Be An Instance Of Buffer.'));
+      cb(new Error('Local Status: 0x80007F11\tBody: Argument 3 Must Be An Instance Of Buffer.'));
       return;
     }
 
     if (arguments.length < 3) {
-      cb(new Error('Local Status: 0x80007F12  Body: No Enough Arguments To Access UPYun API.'));
+      cb(new Error('Local Status: 0x80007F12\tBody: No Enough Arguments To Access UPYun API.'));
       return;
     }
 
@@ -145,6 +145,10 @@
     }, function (req, resp, body) {
       // callback
       // console.log(':: DEBUG :: do_access -> request.callback -> body =', body);
+      if (!resp) {
+        cb(new Error('Local Status: 0x80007FFF\tBody: Network Error.'));
+        return;
+      }
       var status = resp.statusCode;
       if (status === 200) {
         cb(null, resp.headers, body);
@@ -355,7 +359,7 @@
 
     if (depth > 10) {
       // should trigger an Error ?
-      cb(new Error('Local Status: 0x80007F03  Body: Too Many Directories. The Dirs Depth Should Not Larger Than 10.'));
+      cb(new Error('Local Status: 0x80007F03\tBody: Too Many Directories. The Dirs Depth Should Not Larger Than 10.'));
       return;
     }
 
@@ -487,12 +491,12 @@
 
     // to protect the root directory
     if (path === '/') {
-      cb(new Error('Local Status: 0x80007F01  Body: Destroy Root Directory "/" Is NOT ALLOWED!!!'));
+      cb(new Error('Local Status: 0x80007F01\tBody: Destroy Root Directory "/" Is NOT ALLOWED!!!'));
       return;
     }
 
     if (this.iDOReallyWantToDestroyDirectories === false) {
-      cb(new Error('Local Status: 0x80007F0F  Body: DO YOU REALLY WANT TO DESTROY DIRECTORIES? PLEASE SET upyunObj.iDOReallyWantToDestroyDirectories = true.'));
+      cb(new Error('Local Status: 0x80007F0F\tBody: DO YOU REALLY WANT TO DESTROY DIRECTORIES? PLEASE SET upyunObj.iDOReallyWantToDestroyDirectories = true.'));
       return;
     }
 
