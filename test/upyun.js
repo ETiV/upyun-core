@@ -16,7 +16,7 @@ describe('UPYUN Core', function () {
   var config = require('./config');
   var crypto = require('crypto');
   var lib_path = require('path');
-  var UPYUN = require('../main').UPYUN;
+  var UPYUN = require('../main');
   var upyun = new UPYUN(config.upyun.bucket, config.upyun.user, config.upyun.pass);
 
   var BASE_DIR = config.upyun.TEST_BASE_DIR || '_TEST_BASE_';
@@ -153,9 +153,9 @@ describe('UPYUN Core', function () {
       });
     });
 
-    describe('# showDir()', function () {
+    describe('# listDir()', function () {
       it('the base directory "_" should contains the dir_name', function (done) {
-        upyun.showDir(lib_path.join(BASE_DIR), function (err, list) {
+        upyun.listDir(lib_path.join(BASE_DIR), function (err, list) {
           if (err) {
             done(err);
           } else {
@@ -182,7 +182,7 @@ describe('UPYUN Core', function () {
 
   });
 
-  describe('Recursive Remove Directories', function () {
+  describe('Recursively Remove Directories', function () {
     describe('# destroyDirs()', function () {
 
       it('the ROOT "/" directory should not be destroyed', function (done) {

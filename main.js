@@ -403,7 +403,7 @@
    * @param {String} path
    * @param {Function} cb
    */
-  UPYUN.prototype.showDir = function (path, cb) {
+  UPYUN.prototype.listDir = function (path, cb) {
     if (typeof cb !== 'function') {
       cb = function () {
       };
@@ -454,8 +454,8 @@
         }
 
         cb(err, list);
-        // console.log(':: DEBUG :: showDir -> callback -> err =', err);
-        // console.log(':: DEBUG :: showDir -> callback -> body =', body);
+        // console.log(':: DEBUG :: listDir -> callback -> err =', err);
+        // console.log(':: DEBUG :: listDir -> callback -> body =', body);
       }
     ]);
   };
@@ -498,7 +498,7 @@
 
     var self = this;
 
-    this.showDir(path, function (err, list) {
+    this.listDir(path, function (err, list) {
       if (err) {
         // reset iDOReallyWantToDestroyDirectories = false
         // to force the user set this protect lock again
@@ -507,7 +507,7 @@
         }
 
         cb(err);
-        // console.log(':: DEBUG :: destroyDir -> showDir -> err =', err);
+        // console.log(':: DEBUG :: destroyDir -> listDir -> err =', err);
       } else {
         async.eachSeries(
             list,
@@ -562,7 +562,12 @@
     do_access.apply(this, [
       'GET', '/' + this.bucket + '/?usage',
       function (err, headers /* useless */, body) {
-        cb(err, body || 0);
+        if (typeof body !== 'number') {
+          body = 0;
+        } else {
+          body = parseInt(body);
+        }
+        cb(err, body);
         // console.log(':: DEBUG :: bucketUsage -> callback -> err =', err);
 
         /**
@@ -652,5 +657,5 @@
     FOLDER: 'folder'
   };
 
-  exports.UPYUN = UPYUN;
+  module.exports = UPYUN;
 })();
