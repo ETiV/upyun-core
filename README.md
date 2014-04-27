@@ -146,5 +146,14 @@ upyun.bucketUsage(cb);
 ### setHost(hostIndex)
 `// no callback`
 
+### purge(an_array_of_urls, cb)
+`// callback: function(err, an_array_of_invalid_urls){}`
+
+To Purge The CDN Cache Of Online Resources.
+
+```
+upyun.purge([url1, url2, url3], cb);
+```
+
 There are 4 hosts of UPYUN HTTP REST API, choose one of them.
 
