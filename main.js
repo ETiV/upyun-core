@@ -611,6 +611,12 @@
         'purge': url_list.join('\n')
       }
     }, function (req, resp, body) {
+
+      if (!resp) {
+        cb(new Error('Local Status: 0x80007FFF\tBody: Network Error.'));
+        return;
+      }
+
       var status = resp.statusCode;
       if (status === 200) {
         var json = {};
