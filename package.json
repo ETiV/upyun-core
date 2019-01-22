@@ -24,7 +24,7 @@
     "random-word": "~0.1.0"
   },
   "dependencies": {
-    "request": "~2.34.0",
+    "request": "~2.68.0",
     "async": "~0.7.0"
   }
 }
